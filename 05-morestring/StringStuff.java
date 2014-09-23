@@ -1,0 +1,17 @@
+public class StringStuff {
+    public String nonStart(String a, String b) {
+	String a1 = a.substring(1);
+	String b1 = b.substring(1);
+	return a1+b1;
+    }
+
+    public String makeAbba(String a, String b) {
+	return a+b+b+a;
+    }
+
+    public int diff21(int n) {
+	int result = Math.abs(n-21);
+	if (n>21) return result*2;
+	else return result;
+    }
+}
