@@ -14,4 +14,12 @@ public class StringStuff {
 	if (n>21) return result*2;
 	else return result;
     }
+    public int teaParty(int tea, int candy) {
+	if (tea >=5 && candy >=5) {
+	   if (tea>=2*candy || candy>=2*tea)  {return 2;}
+	   else {return 1;}
+	}
+	else {return 0;}
+}
+
 }
