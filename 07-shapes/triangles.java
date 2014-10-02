@@ -13,7 +13,7 @@ public String tri1(int h) {
 	hh=hc;
 	}
 	return out;
-
+}
 //30 min
   public String tri2(int h) {
 	String out = "";
