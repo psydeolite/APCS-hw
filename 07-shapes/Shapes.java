@@ -133,4 +133,28 @@ public class Shapes {
 	return s;
     }
 
+    
+
+public String frame(int h,int w) {
+    String s="";
+    int i,j;
+    for (i=0;i<h;i++) {
+	if (i==0 || i==h-1) {
+	    for (j=0;j<w;j++) {
+		s+="*";
+	    }
+	} else {
+	    for (j=0;j<w;j++) {
+		if (j==0 || j==w-1) {
+		    s+="*";
+		}
+		else {
+		    s+=" ";
+		}
+	    }
+	}
+	 s+="\n";
+    }
+    return s;
+}
 }
