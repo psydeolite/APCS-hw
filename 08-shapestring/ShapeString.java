@@ -31,7 +31,8 @@ public class ShapeString {
 	}
 	return s;
     }
-	
+
+    //5 min	
     public String stringX(String str) {
 	String out="";
 	for (int i=0;i<str.length();i++) {
