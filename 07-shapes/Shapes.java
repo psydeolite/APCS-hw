@@ -79,41 +79,30 @@ public class Shapes {
    
      public String tri3rev(int h) {
 	String s="";
-	int width=(2*h);
-	int height;
-	int r1=0;
-	int r2=width;
-	int j;
-	for (height=0;height<h;height++) {
-	    for (j=0;j<=width;j++) {
-		if (j>=r1 && j<=r2) {
-		    s+="*";
-		}
-		else {
-		    s+=".";
-		}
+	for (int height=h-2;height>=0;height--) {
+	    for (int j=0;j<h-height-1;j++) {
+		s+=".";
+	       }
+	    for (int i=0;i<2*height+1;i++) {
+		s+="*";
 	    }
 	    s+="\n";
-	    r1+=1;
-	    r2-=1;
 	}
-	return s;
+	 return s;
     }
-    //doesn't work correctly for odd h, will finish later for sleep reasons
+   
     public String diamond(int h) {
-	String s="";
-	int m;
-	
-	if (h%2==0) {
-	    m=(h/2)+1;
+	int m=h/2;
+	String s=tri3(h-m);
+	for (int height=m-1;height>=0;height--) {
+	    for (int j=0;j<h-height-m-1;j++) {
+		s+=" ";
+	       }
+	    for (int i=0;i<2*height+1;i++) {
+		s+="*";
+	    }
+	    s+="\n";
 	}
-	else {
-	    m=(h+1)/2;
-	}
-	int i=h-m;
-	s=tri3(m);
-	s+=tri3rev(h-m+1);
-	    
 	return s;
     }
 
