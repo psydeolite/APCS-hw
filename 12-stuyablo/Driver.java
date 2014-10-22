@@ -139,7 +139,7 @@ public class Driver {
 	  Boolean cpuChoosing = true;
 	  while (cpuChoosing) {
 	       if (compchoiceB == 0) {
-		  CPU.rest();
+		  CPU.baseAttack(player);
 		  System.out.println("Your opponent hits you");
 		  cpuChoosing = false;
 	      } else if (compchoiceB == 1) {
