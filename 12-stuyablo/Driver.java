@@ -11,27 +11,25 @@ public class Driver {
     String playerchoice="";
     Boolean choosing = true;
     while (running) {
-      
-
-      while (choosing) {
+	while (choosing) {
         // creates player type
-        System.out.println("Choose your class:");
-        System.out.println("\tr: Rogue");
-        System.out.println("\tw: Warrior");
-        System.out.print("Your class: ");
-        line=sc.nextLine();
-        if (line.toLowerCase().equals("warrior") || line.toLowerCase().equals("w")) {
-          choice = "w";
-          choosing = false;
-        } else if (line.toLowerCase().equals("rogue") || line.toLowerCase().equals("r")) {
-          choice = "r";
-          choosing = false;
-        } else {
-          System.out.println("Invalid name\n");
-        }
-      }
-
-      // create player
+	    System.out.println("Choose your class:");
+	    System.out.println("\tr: Rogue");
+	    System.out.println("\tw: Warrior");
+	    System.out.print("Your class: ");
+	    line=sc.nextLine();
+	    if (line.toLowerCase().equals("warrior") || line.toLowerCase().equals("w")) {
+		choice = "w";
+		choosing = false;
+	    } else if (line.toLowerCase().equals("rogue") || line.toLowerCase().equals("r")) {
+		choice = "r";
+		choosing = false;
+	    } else {
+		System.out.println("Invalid name\n");
+	    }
+	}
+	
+	// create player
       BaseChar player;
       if (choice.equals("w"))
         player = new Warrior();
@@ -43,27 +41,38 @@ public class Driver {
       line = sc.nextLine();
       player.setName(line);
       System.out.println("Welcome " + player);
-
+      
+      try {
+	  Thread.sleep(1000);                 
+      } catch(Exception e) {}
+      System.out.print(".");
+      try {
+	  Thread.sleep(1000);                 
+      } catch(Exception e) {}
+      System.out.print(".");
+       try {
+	  Thread.sleep(1000);                 
+      } catch(Exception e) {}
+       System.out.print(".");
+        try {
+	  Thread.sleep(1000);                 
+      } catch(Exception e) {}
+	System.out.println(" ");
+       
       BaseChar CPU;
       int compchoiceA = r.nextInt(2);
       if (compchoiceA == 0){
 	  CPU = new Warrior();
-	  System.out.println("Your opponent is a Warrior.");
+	  System.out.println("A Warrior attacks you!");
       } else {
 	  CPU = new Rogue();
-	  System.out.println("Your opponent is a Rogue.");
+	  System.out.println("A Rogue attacks you!");
       }
       
       Boolean battle = true;
       
-      while (battle) {
-	  //with each cycle checks for death
-	  //if (player.getHealth() <= 0 || CPU.getHealth() <= 0) {
-	  //break;
-	  //}
-	  
-	  //user offered action 
-	  System.out.println("What would you like to do (LIST): ");
+      while (battle) { 
+	  System.out.println("Whatever will you do?     (LIST): ");
 	  if (choice.equals("w")) {
 	      System.out.println("0: Basic Attack");
 	      System.out.println("1: Revitalize");
@@ -154,8 +163,14 @@ public class Driver {
 	    System.out.println("You win!");
 	    break;
 	   }
+	   try {
+	       Thread.sleep(1000);                
+	   } catch(Exception e) {}
 	  System.out.println("Your opponent has "+CPU.getHealth()+" health and "+CPU.getMana()+" mana");
-	  
+	  try {
+	       Thread.sleep(1000);                
+	  } catch(Exception e) {}    
+     
 	  Boolean cpuChoosing = true;
 	  int compchoiceB = r.nextInt(7);
 	  while (cpuChoosing) {
@@ -218,11 +233,13 @@ public class Driver {
 	      System.out.println("Game over!");
 	      break;
 	  }
+	  try {
+	       Thread.sleep(1000);                
+	  } catch(Exception e) {}        
 	  System.out.println("You have "+player.getHealth()+" health and "+player.getMana()+" mana");
 	  //System.out.println("Your opponent has "+CPU.getHealth()+" health and "+CPU.getMana()+" mana");
       }
-      
+      running=false;
     }
-    running=false;
   }
 }
