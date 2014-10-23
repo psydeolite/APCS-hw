@@ -101,7 +101,7 @@ public abstract class BaseChar {
 
   public void baseAttack(BaseChar other) {
     double blocked = other.defense / 16 * (Math.random() + 1);
-    double damage = attack / 8 * (Math.random() + 1);
+    double damage = attack;
     int net = (int)(damage - blocked);
     other.removeHealth(net);
   }

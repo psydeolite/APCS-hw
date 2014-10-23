@@ -15,7 +15,7 @@ public class Warrior extends BaseChar {
   public void special(BaseChar other) {
     removeMana(80);
     while (Math.random() > .7) {
-      int damage = (int) (Math.random() / 2);
+      int damage = (int) (Math.random()*attack /2);
       other.removeHealth(damage);
     }
   }
