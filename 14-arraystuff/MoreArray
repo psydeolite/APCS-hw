@@ -35,3 +35,44 @@ public int[] tenRun(int[] nums) {
   return result;
  }
 
+public boolean tripleUp(int[] nums) {
+  boolean trip=false;
+  for (int i=nums.length-1;i>=2;i--) {
+   if (nums[i]-nums[i-1]==1) {
+    if (nums[i-1]-nums[i-2]==1) {
+     trip=true;
+    }
+   }
+  }
+  return trip;
+ }
+
+public boolean canBalance(int[] nums) {
+  boolean r=false;
+  int sum1=0;
+  int sum2=0;
+  for (int i=0;i<nums.length;i++) {
+   sum1+=nums[i];
+   sum2=0;
+   for (int j=i+1;j<nums.length;j++) {
+    sum2+=nums[j];
+   }
+   if (sum1==sum2) {
+    r=true;
+   }
+  }
+ return r;
+}
+
+public int[] seriesUp(int n) {
+    int[] series=new int[n*(n+1)/2];
+    int pos=0;
+    for (int i=0;i<=n;i++) {
+      for (int j=1;j<=i;j++) {
+        series[pos]=j;
+        pos++;
+      }
+    }
+  return series;
+}
+
