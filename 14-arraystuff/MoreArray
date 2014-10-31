@@ -76,3 +76,23 @@ public int[] seriesUp(int n) {
   return series;
 }
 
+public int maxMirror(int[] nums) {
+  int max=0;
+  int temp;
+  for (int i=0;i<nums.length;i++) {
+    for (int j=i;j<nums.length;j++) {
+      if (nums[i]==nums[j]) {
+        if (j==i+1) temp=2; else temp=1;
+        int i2=i-1;
+        int j2=j+1;
+        while (i2>=0 && j2<nums.length && nums[i2]==nums[j2]) {
+          if (i==j) temp+=2; else temp++;
+          i2--;
+          j2++;
+        }
+        if (temp>max) max=temp;
+      }
+    }
+  }
+  return max;
+}
