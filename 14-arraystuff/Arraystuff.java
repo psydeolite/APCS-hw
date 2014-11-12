@@ -25,14 +25,14 @@ public class  Arraystuff {
     
 
     /*--------------------- Methods --------------------*/ 
-
+ 
     public String toString(){
 	String s = "";
 	for (int i = 0; i < a.length; i++) {
 	    s = s + a[i]+", ";
 	}
 	return s;}
-
+   
     public int find(int n) {
 	int r=-1;
 	int c=0;
@@ -57,6 +57,38 @@ public class  Arraystuff {
 	}
 	return max;
     }
+
+    //slightly altered on 11-5 for convenience in mode function    
+    public int freq(int i){
+	int freak = i;
+	int c = 0;
+	for (int x = 0; x < a.length; x++){
+	    if (a[x] == freak){
+		c++;
+	    }
+	}
+	return c;
+    }
+
+    //na
+    public int mode() {
+	int r=a[0];
+	int c=0;
+	int[] tested=new int[a.length];
+	for (int i=0;i<a.length;i++) {
+	    if (!(find(a[i])>-1)) {
+		      if (freq(a[i]) > r) {
+			  r=a[i];
+			  tested[c]=a[i];
+			  c++;
+		      }
+		  }
+	}
+	return r;
+    }
+
+	 
+	    
 	    
     
     /*--------------------- Main --------------------*/ 
@@ -66,6 +98,7 @@ public class  Arraystuff {
 	System.out.println(as);
 	System.out.println(as.max());
 	System.out.println(as.find(100));
+	System.out.println(as.mode());
 	
     }
     
