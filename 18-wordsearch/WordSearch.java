@@ -24,63 +24,165 @@ public class WordSearch {
 	return s;
     }
 
-    public void addWordH(String w, String direction, int row, int col) {
+    //add words horizontally
+    public boolean addWordH(String w, String direction, int row, int col) {
+	boolean fin=false;
 	int c=col;
-	if (col+w.length()>board.length || col-w.length()<0 || row>=board[0].length) {
-	    System.out.println("out of bounds");
-	} else {
-	    if (direction.equals("r")){
+	if (direction.equals("r")){
+	    if (col+w.length()>board.length) {
+		System.out.println("length out of bounds");
+	    } else {
 		for (int i=0;i<w.length();i++) {
 		    if (board[row][c]==w.charAt(i) || board[row][c]=='.') {
 			board[row][c]=w.charAt(i);
 			c++;
+			fin=true;
 		    } else {
 			System.out.println("overlap error");
+			break;
 		    }
 		}
+		fin=true;
 	    }
-	    if (direction.equals("l")){
+	} else {
+	    if (col-w.length()<0) {
+		System.out.println("length out of bounds");
+	    } else {
 		for (int i=0;i<w.length();i++){
 		    if (board[row][c]==w.charAt(i) || board[row][c]=='.') {
 			board[row][c]=w.charAt(i);
 			c--;
+			fin=true;
 		    } else {
+			fin=false;
 			System.out.println("overlap error");
+			break;
 		    }
 		}
 	    }
 	}
+	return fin;
     }
 
-    public void addWordV(String w, String direction, int row, int col) {
+    //add words vertically
+    public boolean addWordV(String w, String direction, int row, int col) {
+	boolean fin=false;
 	int r=row;
-	if (row+w.length()>board[0].length ||  row-w.length()<0 || col>=board.length) {
-	    System.out.println("out of bounds");
-	} else {
-	    if (direction.equals("d")) {
+	if (direction.equals("d")) {
+	    if (row+w.length()>board[0].length) {
+		System.out.println("length out of bounds");
+	    } else {
 		for (int i=0;i<w.length();i++) {
 		    if (board[r][col]==w.charAt(i) || board[r][col]=='.') {
 			board[r][col]=w.charAt(i);
 			r++;
+			fin=true;
 		    } else {
+			fin=false;
 			System.out.println("overlap error");
+			break;
 		    }
 		}
-	    } else if (direction.equals("u")) {
+	    }
+	} else {
+	    if (row-w.length()<0) {
+		System.out.println("row out of bounds");
+	    } else {
 		for (int i=0;i<w.length();i++) {
 		    if (board[r][col]==w.charAt(i) || board[r][col]=='.') {
 			board[r][col]=w.charAt(i);
 			r--;
+			fin=true;
 		    } else {
+			fin=false;
 			System.out.println("overlap error");
+			break;
 		    }
 		}
 	    }
 	}
+	return fin;
     }
-
-
-
+    
+    //add words diagonally
+    //for ease of use, upright=1,downright=2,downleft=3,upleft=4
+    public boolean addWordD(String w, String direction, int row, int col) {
+	boolean fin=false;
+	int r=row;
+       	int c=col;
+	if (direction.equals("1")) {
+	    if (row-w.length()>board[0].length || col+w.length()>board.length) {
+		System.out.println("length out of bounds");
+	    } else {
+		for (int i=0;i<w.length();i++) {
+		    if (board[r][c]==w.charAt(i) || board[r][c]=='.') {
+			board[r][c]=w.charAt(i);
+			r--;
+			c++;
+			fin=true;
+		    } else {
+			fin=false;
+			System.out.println("overlap error");
+			break;
+		    }
+		}
+	    }
+	} else if (direction.equals("2")) {
+	    if (row+w.length()>board[0].length || col+w.length()>board.length) {
+		System.out.println("length out of bounds");
+	    } else {
+		for (int i=0;i<w.length();i++) {
+		    if (board[r][c]==w.charAt(i) || board[r][c]=='.') {
+			board[r][c]=w.charAt(i);
+			r++;
+			c++;
+			fin=true;
+		    } else {
+			fin=false;
+			System.out.println("overlap error"); 
+			break;
+		    }
+		}
+	    }
+	} else if (direction.equals("3")) {
+	     if (row+w.length()>board[0].length || col-w.length()>board.length) {
+		System.out.println("length out of bounds");
+	     } else {
+		 for (int i=0;i<w.length();i++) {
+		    if (board[r][c]==w.charAt(i) || board[r][c]=='.') {
+			board[r][c]=w.charAt(i);
+			r++;
+			c--;
+			fin=true;
+		    } else {
+			fin=false;
+			System.out.println("overlap error"); 
+			break;
+		    }
+		}
+	     }
+	} else {
+	     if (row-w.length()>board[0].length || col-w.length()>board.length) {
+		System.out.println("length out of bounds");
+	     } else {
+		 for (int i=0;i<w.length();i++) {
+		    if (board[r][c]==w.charAt(i) || board[r][c]=='.') {
+			board[r][c]=w.charAt(i);
+			r--;
+			c--;
+			fin=true;
+		    } else {
+			fin=false;
+			System.out.println("overlap error"); 
+			break;
+		    }
+		}
+	     }
+	}
+	return fin;
+    }
+	    
+    //Driver
     public static void main(String[] args) {
 	WordSearch w = new WordSearch(20,40);
 	System.out.println(w);
@@ -88,12 +190,15 @@ public class WordSearch {
 	System.out.println(w);
 	w.addWordH("olleh","l",4,15);
 	System.out.println(w);	
-	w.addWordH("hello", "r",40,10); //outofbounds
+	w.addWordH("hello", "r",10,10); //outofbounds
 	w.addWordH("hi","l",3,15); //overlap
 	System.out.println(w);	
-	w.addWordV("hello","d",40,10); //out of bounds
+	w.addWordV("hello","d",10,10); //out of bounds
 	w.addWordV("hello","d",10,15); //overlap
 	System.out.println(w);
+	w.addWordD("haythar","2",1,1); //diagonally
+	System.out.println(w);
+	w.addWordV("oyvey","d",2,2);//test overlap
 	
     }
 }
