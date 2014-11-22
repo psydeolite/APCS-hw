@@ -41,13 +41,45 @@ public class WordSearch {
 	    }
 	    if (direction.equals("l")){
 		for (int i=0;i<w.length();i++){
-		    board[row][c]=w.charAt(i);
-		    c--;
+		    if (board[row][c]==w.charAt(i) || board[row][c]=='.') {
+			board[row][c]=w.charAt(i);
+			c--;
+		    } else {
+			System.out.println("overlap error");
+		    }
 		}
-<<<<<<< HEAD
 	    }
 	}
     }
+
+    public void addWordV(String w, String direction, int row, int col) {
+	int r=row;
+	if (row+w.length()>board[0].length ||  row-w.length()<0 || col>=board.length) {
+	    System.out.println("out of bounds");
+	} else {
+	    if (direction.equals("d")) {
+		for (int i=0;i<w.length();i++) {
+		    if (board[r][col]==w.charAt(i) || board[r][col]=='.') {
+			board[r][col]=w.charAt(i);
+			r++;
+		    } else {
+			System.out.println("overlap error");
+		    }
+		}
+	    } else if (direction.equals("u")) {
+		for (int i=0;i<w.length();i++) {
+		    if (board[r][col]==w.charAt(i) || board[r][col]=='.') {
+			board[r][col]=w.charAt(i);
+			r--;
+		    } else {
+			System.out.println("overlap error");
+		    }
+		}
+	    }
+	}
+    }
+
+
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch(20,40);
@@ -59,38 +91,9 @@ public class WordSearch {
 	w.addWordH("hello", "r",40,10); //outofbounds
 	w.addWordH("hi","l",3,15); //overlap
 	System.out.println(w);	
+	w.addWordV("hello","d",40,10); //out of bounds
+	w.addWordV("hello","d",10,15); //overlap
+	System.out.println(w);
+	
     }
-=======
- 
-		public String toString(){
-				String s = "";
-				for (int i = 0; i < board.length; i++) {
-						for (int j = 0; j < board[i].length; j++) {
-								s = s + board[i][j];
-						}
-						s = s + "\n";
-				}
-				return s;
-		}
-
-		public void addWordH(String w, int row, int col){
-				int c = col;
-				for (int i=0; i < w.length();i++){
-						board[row][c] = w.charAt(i);
-						c++;
-				}
-		}
-		
-		public static void main(String[] args) {
-				WordSearch w = new WordSearch();
-				System.out.println(w);
-				w.addWordH("hello",3,15); // should work
-				w.addWordH("look",3,14); // test illegal overlap
-				//w.addWordH("look",3,18); // test legal overlap
-				//w.addWordH("look",-3,20); // test illegal row
-				//w.addWordH("look",3,55); // test illegal col
-				// etc
-				System.out.println(w);
-		}
->>>>>>> fedea11ddf2d60064d2252533788adba1afdf417
 }
