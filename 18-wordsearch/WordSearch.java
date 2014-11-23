@@ -1,3 +1,4 @@
+import java.util.*;
 public class WordSearch {
     private char[][] board;
     
@@ -181,7 +182,26 @@ public class WordSearch {
 	}
 	return fin;
     }
-	    
+    
+    public boolean addWord(String w) {
+	Random rand=new Random();
+	String[] directions={"r","l","u","d","1","2","3","4"};
+	int row=rand.nextInt(40);
+	int col=rand.nextInt(40);
+	String direction=directions[rand.nextInt(7)];
+	boolean r=false;
+	if (direction.equals("r") || direction.equals("l")) {
+	    r=true;
+	    addWordH(w,direction,row,col);
+	} else if (direction.equals("u") || direction.equals("d")) {
+	    r=true;
+	    addWordV(w,direction,row,col);
+	} else if (direction.equals("1") || direction.equals("2") || direction.equals("3") || direction.equals("4")) {
+	    r=true;
+	    addWordD(w,direction,row,col);
+	}
+    return r;
+    }
     //Driver
     public static void main(String[] args) {
 	WordSearch w = new WordSearch(20,40);
