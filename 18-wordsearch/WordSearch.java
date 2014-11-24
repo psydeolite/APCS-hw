@@ -56,7 +56,6 @@ public class WordSearch {
 	int col=rand.nextInt(board[0].length);
 	int dRow=rand.nextInt(3)-1;
 	int dCol=rand.nextInt(3)-1;
-	boolean r=addWordAll(w,row,col,dRow,dCol);
 	if (dRow==0 && dCol==0) {
 	    return false;
 	}
@@ -81,7 +80,18 @@ public class WordSearch {
 	//w.addWordAll("haythar","2",1,1); //diagonally
 	//System.out.println(w);
 	//w.addWordAll("oyvey","d",2,2);//test overlap
-	w.addWord("loquacious"); //test all
+	//System.out.println(w.addWord("loquacious")); //test all
+	System.out.println(w);
+	w.addWordAll("oyvey",10,10,1,0);
+	w.addWordAll("oyvey",10,10,1,1);
+	w.addWordAll("oyvey",10,10,0,1);
+	w.addWordAll("oyvey",10,10,-1,0);
+	w.addWordAll("oyvey",10,10,-1,-1);
+	w.addWordAll("oyvey",10,10,0,-1);
+	w.addWordAll("oyvey",10,10,0,-1);
+	w.addWordAll("oyvey",10,10,1,-1);
+	w.addWordAll("oyvey",10,10,-1,1);
+	
 	System.out.println(w);
 	    
     }
