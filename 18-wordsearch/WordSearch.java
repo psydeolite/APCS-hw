@@ -1,7 +1,7 @@
 import java.util.*;
 public class WordSearch {
     private char[][] board;
-    
+    private Random rand=new Random();
     public WordSearch(int r, int c){
 	board = new char[r][c];
 	for (int i = 0; i < board.length; i++) {
@@ -51,7 +51,7 @@ public class WordSearch {
     }
     
     public boolean addWord(String w) {
-	Random rand=new Random();
+	
 	int row=rand.nextInt(board.length);
 	int col=rand.nextInt(board[0].length);
 	int dRow=rand.nextInt(3)-1;
@@ -63,24 +63,24 @@ public class WordSearch {
 	System.out.println("row:"+row+" col:"+col+" dRow:"+dRow+" dCol:"+dCol);
 	return r;
     }
-    //Driver
+
+    public void fillIn() {
+	ArrayList<Character> alphabet=new ArrayList<Character>();
+	for (char alpha='A'; alpha<='Z';alpha++) {
+	    alphabet.add(alpha);
+	}
+	for (int r=0;r<board.length;r++) {
+	    for (int c=0;c<board[0].length;c++) {
+		if (board[r][c]=='.') {
+		    board[r][c]=alphabet.get(rand.nextInt(26));
+		}
+	    }
+	}
+	System.out.println(alphabet);
+    }
+
     public static void main(String[] args) {
 	WordSearch w = new WordSearch(20,40);
-	System.out.println(w);
-	//w.addWordAll("hello","r",3,15,1,1);
-	//System.out.println(w);
-	//w.addWordAll("olleh","l",4,15);
-	//System.out.println(w);	
-	//w.addWordAll("hello", "r",40,40); //outofbounds
-	//w.addWordAll("hi","l",3,15); //overlap
-	//System.out.println(w);	
-	//w.addWordAll("hello","d",80,10); //out of bounds
-	//w.addWordAll("hello","d",10,15); //overlap
-	//System.out.println(w);
-	//w.addWordAll("haythar","2",1,1); //diagonally
-	//System.out.println(w);
-	//w.addWordAll("oyvey","d",2,2);//test overlap
-	//System.out.println(w.addWord("loquacious")); //test all
 	System.out.println(w);
 	w.addWordAll("oyvey",10,10,1,0);
 	w.addWordAll("oyvey",10,10,1,1);
@@ -91,8 +91,8 @@ public class WordSearch {
 	w.addWordAll("oyvey",10,10,0,-1);
 	w.addWordAll("oyvey",10,10,1,-1);
 	w.addWordAll("oyvey",10,10,-1,1);
-	
-	System.out.println(w);
+       	System.out.println(w);
+	//w.fillIn();
 	    
     }
 }
