@@ -1,14 +1,14 @@
 import java.util.*;
 
 public class Sarray {
-    int[] data;
+    String[] data;
     int last;
     public Sarray () {
 	Random rand=new Random();
 	last=10;
-	data=new int[10];
+	data=new String[10];
 	for (int i=0;i<last;i++) {
-	    data[i]=rand.nextInt(10)+1;
+	    data[i]=""+rand.nextInt(10)+1;
 	}
 	    
     }
@@ -18,12 +18,12 @@ public class Sarray {
 	return last;
     }
 
-    public int get(int index) {
+    public String get(int index) {
 	return data[index];
     }
     
-    public int[] makeLonger(int[] small) {
-	int[] result=new int[small.length+1];
+    public String[] makeLonger(String[] small) {
+	String[] result=new String[small.length+1];
 	for (int i=0;i<small.length;i++) {
 	    result[i]=small[i];
 	}
@@ -34,21 +34,21 @@ public class Sarray {
 	last++;
 	if (last>data.length) {
 	    data=makeLonger(data);
-	    data[data.length-1]=i;
+	    data[data.length-1]=""+i;
 	} else {
-	    data[last]=i;
+	    data[last]=i+"";
 	}
 	return true;
     }
 
-    public void add(int index, int i) {
+    public void add(int index, String i) {
 	last++;
-	int[] newdata = new int[last];
+	String[] newdata = new String[last];
 	boolean added=false;
 	for (int h=0;h<index;h++) {
 	    newdata[h]=data[h];
 	}
-	newdata[index]=i;
+	newdata[index]=""+i;
 	for (int j=index;j<data.length;j++) {
 	    newdata[j+1]=data[j];
 	}
@@ -63,15 +63,15 @@ public String toString() {
     return r+="]";
 }
 
-    public int set(int index, int i) {
-	int old=data[index];
+    public String set(int index, String i) {
+	String old=data[index];
 	data[index]=i;
 	return old;
     }
 
-    public int remove(int index) {
-	int old=data[index];
-	int[] newdata=new int[data.length];
+    public String remove(int index) {
+	String old=data[index];
+	String[] newdata=new String[data.length];
 	for (int h=0;h<index;h++) {
 	    newdata[h]=data[h];
 	}

@@ -7,9 +7,13 @@ public class Driver {
 	System.out.println(supah.add(5));
 	System.out.println(supah.toString());
 	System.out.println(supah.get(10));
-	supah.add(0,3);
+	supah.add(0,"3");
 	System.out.println(supah.toString());
 	supah.remove(5);
 	System.out.println(supah.toString());
+
+	System.out.println("Order:");
+	OrderedSarray orda=new OrderedSarray();
+	System.out.println(orda.toString());
     }
 }
