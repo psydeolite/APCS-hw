@@ -1,26 +1,43 @@
+import java.util.Arrays;
 public class OrderedSarray extends Sarray {
-    public OrderedSarray() {
-	super();
-	System.out.println(this);
-	int c=this.size();
-	for (int i=0;i<c;i++) {
-	    for (int j=1;j<c;j++) {
-		if (this.get(i).compareTo(this.get(j))<0) {
-		    this.remove(i);
-		    super.add(j-1,this.get(i));
-		}
-	    }
-	}
+    public OrderedSarray(String[] words) {
+	super(words);
+	Arrays.sort(data);
     }
 
-    public void order() {
-	for (int i=0;i<this.last;i++) {
-	    for (int j=1;j<this.last;j++) {
-		if (this.get(i).compareTo(this.get(j))<0) {
-		    this.remove(i);
-		    super.add(j-1,this.get(i));
-		}
-	    }
+    public OrderedSarray() {
+	super();
+	Arrays.sort(data);
+    }
+
+    public boolean add(String el) {
+	boolean added=false;
+	super.add(el);
+	String[] nd=new String[data.length];
+	for (int h=0;h<data.length;h++) {
+	    nd[h]=data[h];
 	}
+	for (int i=0;i<data.length;i++) {
+	    if (el.compareTo(data[i])<0 && !added) {
+		nd[i]=el;
+		added=true;
+	    } else if (added) {
+		nd[i]=data[i-1];
+	    } 
+	}
+	data=nd;
+	return true;
+    }
+
+    public String set(int index, String el) {
+	String old = remove(index);
+	last--;
+	String[] nd= new String[last];
+	for (int i=0;i<nd.length;i++) {
+	    nd[i]=data[i];
+	}
+	data=nd;
+	add(el);
+	return old;
     }
 }
