@@ -10,9 +10,15 @@ public class Sarray {
 	for (int i=0;i<last;i++) {
 	    data[i]=""+rand.nextInt(10)+1;
 	}
-	    
     }
 
+    public Sarray(String[] words) {
+	last=words.length;
+	data=new String[words.length];
+	for (int i=0;i<words.length;i++) {
+	    data[i]=words[i];
+	}
+    }
     public int size() {
 	System.out.println(data.length);
 	return last;
@@ -30,7 +36,7 @@ public class Sarray {
 	return result;
     }
 
-    public boolean add(int i) {
+    public boolean add(String i) {
 	last++;
 	if (last>data.length) {
 	    data=makeLonger(data);
@@ -44,7 +50,6 @@ public class Sarray {
     public void add(int index, String i) {
 	last++;
 	String[] newdata = new String[last];
-	boolean added=false;
 	for (int h=0;h<index;h++) {
 	    newdata[h]=data[h];
 	}
