@@ -87,6 +87,25 @@ public String toString() {
 	return old;
     }
 
+    public void sort() {
+	int ndl=0;
+	String[] nd = String[data.length];
+	boolean added=false;
+	while (ndl<data.length){
+	    add(data[i]);
+	    ndl++;
+	    for (int j=0;j<ndl;j++) {
+		if (data[i].compareTo(nd[j])<0 && !added) {
+		    nd[j]=data[i];
+		    added=true;
+		} else if (added) {
+		    nd[j]=data[j-1];
+		}
+	    }
+	    data=nd;
+	}
+    }
+
 }	    
 	   
 	    
