@@ -2,12 +2,12 @@ import java.util.Arrays;
 public class OrderedSarray extends Sarray {
     public OrderedSarray(String[] words) {
 	super(words);
-	Arrays.sort(data);
+	isort();
     }
 
     public OrderedSarray() {
 	super();
-	Arrays.sort(data);
+	isort();
     }
 
     public boolean add(String el) {
