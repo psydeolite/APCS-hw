@@ -1,6 +1,3 @@
-	    
-	   
-	    
 import java.util.*;
 
 public class Sarray {
@@ -63,7 +60,7 @@ public class Sarray {
 	data=newdata;
     }
 
-public String toString() {
+    public String toString() {
     String r="[";
     for (int i=0;i<data.length;i++) {
 	r+=""+data[i]+", ";
@@ -90,7 +87,7 @@ public String toString() {
 	return old;
     }
 
-     public void isort() {
+    public void isort() {
 	String newVal;
 	int i;
 	for (int a=0;a<last;a++) {
@@ -99,6 +96,22 @@ public String toString() {
 		data[i]=data[i-1];
 	    }
 	    data[i]=newVal;
+	}
+     }
+    
+    public void ssort() {
+	int mind=0;
+	String current;
+	for (int i=0;i<last;i++) {
+	    for (int j=i;j<last;j++) {
+		if (data[mind].compareTo(data[j])>0) {
+		    mind=j;
+		}
+	    }
+	    current=data[i];
+	    data[i]=data[mind];
+	    data[mind]=current;
+	    System.out.println(toString());
 	}
     }
 
