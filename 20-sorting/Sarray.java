@@ -114,7 +114,21 @@ public class Sarray {
 	    System.out.println(toString());
 	}
     }
-
-}	    
+    
+    public void bsort() {
+	String current;
+	String toSwap;
+	for (int j=0;j<last;j++) {
+	    for (int i=0;i<last-1;i++) {
+		if (data[i].compareTo(data[i+1])>0) {
+		    current=data[i];
+		    toSwap=data[i+1];
+		    data[i+1]=current;
+		    data[i]=toSwap;
+		}
+	    }
+	}
+    }	 
+}   
 	   
 	    
