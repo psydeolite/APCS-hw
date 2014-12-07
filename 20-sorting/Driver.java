@@ -3,7 +3,8 @@ public class Driver {
 	Sarray sorry=new Sarray();
 	System.out.println(sorry.toString());
 	//sorry.isort();
-	sorry.bsort();
+	//sorry.ssort();
+	//sorry.bsort();
 	System.out.println(sorry.toString());
     }
 }

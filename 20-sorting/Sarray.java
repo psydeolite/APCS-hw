@@ -101,17 +101,18 @@ public class Sarray {
     
     public void ssort() {
 	int mind=0;
-	String current;
+	String current="";
 	for (int i=0;i<last;i++) {
+	    mind=i;
+	    current=data[i];
 	    for (int j=i;j<last;j++) {
 		if (data[mind].compareTo(data[j])>0) {
+		    current=data[j];
 		    mind=j;
 		}
 	    }
-	    current=data[i];
-	    data[i]=data[mind];
-	    data[mind]=current;
-	    System.out.println(toString());
+	    data[mind]=data[i];
+	    data[i]=current;
 	}
     }
     
