@@ -90,45 +90,70 @@ public class Sarray {
     public void isort() {
 	String newVal;
 	int i;
+	int comp=0;
+	//int as=0;
 	for (int a=0;a<last;a++) {
 	    newVal=data[a];
+	    comp++;
+	    //as++;
 	    for (i=a;i>0 && newVal.compareTo(data[i-1])<0;i--) {
 		data[i]=data[i-1];
+		//as++;
+		comp+=2;
 	    }
 	    data[i]=newVal;
+	    //as++;
 	}
+	//System.out.println(as);
+	System.out.println(comp);
      }
     
     public void ssort() {
 	int mind=0;
 	String current="";
+	//int as=0;
 	for (int i=0;i<last;i++) {
+	    comp++;
 	    mind=i;
 	    current=data[i];
+	    //as+=2;
 	    for (int j=i;j<last;j++) {
+		comp++;
 		if (data[mind].compareTo(data[j])>0) {
+		    comp++;
 		    current=data[j];
 		    mind=j;
+		    //as+=2;
 		}
 	    }
 	    data[mind]=data[i];
 	    data[i]=current;
+	    //as+=2;
 	}
+	//System.out.println(as);
+	System.out.println(comp);
     }
     
     public void bsort() {
 	String current;
 	String toSwap;
+	//int as=0;
 	for (int j=0;j<last;j++) {
+	    comp++;
 	    for (int i=0;i<last-1;i++) {
+		comp++;
 		if (data[i].compareTo(data[i+1])>0) {
+		    comp++;
 		    current=data[i];
 		    toSwap=data[i+1];
 		    data[i+1]=current;
 		    data[i]=toSwap;
+		    //as+=4;
 		}
 	    }
 	}
+	//System.out.println(as);
+	System.out.println(comp);
     }	 
 }   
 	   
