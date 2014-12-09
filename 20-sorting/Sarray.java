@@ -112,6 +112,7 @@ public class Sarray {
 	int mind=0;
 	String current="";
 	//int as=0;
+	int comp=0;
 	for (int i=0;i<last;i++) {
 	    comp++;
 	    mind=i;
@@ -138,6 +139,7 @@ public class Sarray {
 	String current;
 	String toSwap;
 	//int as=0;
+	int comp=0;
 	for (int j=0;j<last;j++) {
 	    comp++;
 	    for (int i=0;i<last-1;i++) {
