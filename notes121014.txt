@@ -1,0 +1,19 @@
+Interfaces
+	a contract (in java) that specifies that a class will implement certain methods with certain signatures
+
+"""
+interface name {
+	method1_signature;
+	method2_signature;
+	etc
+}
+"""
+method signature is: public/private return_type name(params);
+to agree to implement an interface use "implements"
+"""
+class myClass implements Comparable {
+	//class definitions
+}
+"""
+A class can only extend one class but it can implement as many interfaces as it wants (separated by ',')
+
