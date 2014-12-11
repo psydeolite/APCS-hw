@@ -1,4 +1,8 @@
-class Rogue extends BaseChar implements Comparable {
+class Rogue extends BaseChar {
+
+    public Rogue(String n) {
+	super(n);
+    }
 
     protected void boostAttributes() {
 	defense *= 1.5;
@@ -19,13 +23,5 @@ class Rogue extends BaseChar implements Comparable {
 	addHealth(damage);
     }
 
-    public static void main(String[] args) {
-	Rogue[] rog = new Rogue[10];
-	for (int i=0;i<10;i++) {
-	    rog[i]=new Rogue();
-	}
-    }
-
-    public abstract int compareTo(Rogue other) {
-	
+   
 }

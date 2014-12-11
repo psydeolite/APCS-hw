@@ -1,0 +1,2 @@
+Doesn't matter if BaseChar implements or Rogue implements, or both
+order does matter when extending and implementing

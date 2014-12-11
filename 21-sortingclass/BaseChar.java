@@ -1,6 +1,6 @@
 import java.util.*;
 
-public abstract class BaseChar {
+public abstract class BaseChar implements Comparable {
 
   //Attributes
   protected String name = "";
@@ -135,6 +135,10 @@ public abstract class BaseChar {
     attackMod -= attack; // restores attackMod
   }
   
-  public abstract void special(BaseChar other);
+    public abstract void special(BaseChar other);
 
+    public int compareTo(Object other) {
+	BaseChar o = (BaseChar)other;
+	return this.getName().compareTo(o.getName());
+    }
 }
