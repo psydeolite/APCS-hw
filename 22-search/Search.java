@@ -2,44 +2,78 @@ import java.util.*;
 
 public class Search {
     private static Random rand = new Random();
-    private Integer[] intarray;
+    private Comparable[] array;
+    private int len;
     public Search(int n) {
-	intarray=new Integer[n];
-	for (int i=0;i<n;i++) {
-	    intarray[i]=rand.nextInt(20)+1;
-	}
-	Arrays.sort(intarray);
+	array=new Comparable[n];
+	len=n;
     }
-    
-    public Integer lin_search(Integer n) {
-	for (int i=0;i<intarray.length;i++) {
-	    if (intarray[i]==n) {
-		return intarray[i];
+    private int last=0;
+    public void additem(Comparable c) {
+	array[last]=c;
+	last++;
+    }
+
+    public int getLen() {
+	return this.len;
+    }
+
+    public void sort() {
+	Arrays.sort(array);
+    }
+
+    public String toString() {
+	String r="[";
+	for (int i=0;i<array.length;i++) {
+	    r+=array[i]+", ";
+	}
+	return r+"]";
+    }
+
+    public Comparable lsearch(Comparable c) {
+	for (int i=0;i<array.length;i++) {
+	    if (array[i]==c) {
+		return array[i];
 	    }
 	}
 	return null;
     }
 
-    public Integer bin_search(Integer n) {
+    public Comparable bsearch(Comparable c) {
+	sort();
 	int low=0;
-	int high=intarray.length;
-	int mid=high/2;
-	while (mid!=n || mid>0) {
-	    if (intarray[mid]==n) {
-		return intarray[mid];
+	int high=array.length-1;
+	int mid;
+	while (low<=high) {	
+	    mid=(low+high)/2;
+	    if (c.compareTo(array[mid])==0) {
+		return array[mid];
+	    } else if (c.compareTo(array[mid])>0) {
+		low=mid+1;
 	    } else {
-		if (intarray[mid]>n) {
-		    mid=high-(mid/2);
-		    low=high/2;
-		} else {
-		    mid=low+(mid/2);
-		    high=high/2;
-		}
-	    }
+		high=mid-1;		
+	    }	    
 	}
 	return null;
     }
-	
+
+    public Comparable rbinsearch(Comparable c, int low, int high) {
+	int mid=(low+high)/2;
+	if (low>high) {
+	    return null;
+	} else if (c.compareTo(array[mid])==0) {
+	    return array[mid];
+	} else if (c.compareTo(array[mid])>0) {
+	    return rbinsearch(c,mid+1,high);
+	} else {
+	    return rbinsearch(c,low,mid-1);
+	}
+    }
+
+    public Comparable rbsearch(Comparable c) {
+	sort();
+	return rbinsearch(c,0,array.length-1);
+    }
 	
     
 }
