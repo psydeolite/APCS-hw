@@ -1,0 +1,11 @@
+Mariya Gedrich
+Project reviewed: Not PvZ
+https://github.com/RyanTu/APCS-FallProject
+
+Overall, pretty clear and straightforward. An issue in the Base class setName function (line 23): there's no instance variable called "n"? 
+Also I noticed that you didn't specify access for some instance variables, like Health in SunMaker.java and sunCount in Gui.java. In Gui.java, sunCount is public (21), but you also have a getSunCount function (119). The getter function would make more sense if the variable was private, which is recommended anyway. 
+Documentation is needed but at this point there isn't much to document.
+I can see there's a lot of testing going on and the functional code deals with setting up the visual stuff. I'd recommend you start working on the game functionality itself soon.
+Good luck~
+
+
